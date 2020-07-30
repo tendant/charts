@@ -86,18 +86,18 @@ clickhouse:
     enabled: false
     ## Clickhouse data volume
     dataPersistentVolume: 
-      enabled: false
+      enabled: true
       accessModes: 
       - "ReadWriteOnce"
-      storageClassName: "-"
-      storage: "500Gi"
+      storageClassName: "longhorn"
+      storage: "5Gi"
     ## Clickhouse logs volume
     logsPersistentVolume:
       enabled: false
       accessModes: 
       - "ReadWriteOnce"
       storageClassName: "-"
-      storage: "50Gi"
+      storage: "1Gi"
   ##
   ## An API object that manages external access to the services in a cluster, typically HTTP.
   ## Ingress can provide load balancing, SSL termination and name-based virtual hosting.
@@ -195,7 +195,7 @@ clickhouse:
     # root — The znode that is used as the root for znodes used by the ClickHouse server. Optional.
     # identity — User and password, that can be required by ZooKeeper to give access to requested znodes. Optional.
     zookeeper_servers:
-      enabled: false
+      enabled: true
       session_timeout_ms: "30000"
       operation_timeout_ms: "10000"
       #root: "/path/to/zookeeper/node"
@@ -258,7 +258,7 @@ clickhouse:
     ## The users section of the user.xml configuration file contains user settings.
     ## More info: https://clickhouse.yandex/docs/en/operations/settings/settings_users/
     users: 
-      enabled: false
+      enabled: true
       user: 
       - name: "default"
         config:
