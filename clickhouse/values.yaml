@@ -195,15 +195,21 @@ clickhouse:
     # root — The znode that is used as the root for znodes used by the ClickHouse server. Optional.
     # identity — User and password, that can be required by ZooKeeper to give access to requested znodes. Optional.
     zookeeper_servers:
-      enabled: false
+      enabled: true
       session_timeout_ms: "30000"
       operation_timeout_ms: "10000"
       #root: "/path/to/zookeeper/node"
       #identity: "user:password"
       config:
-      - index: ""
-        host: ""
-        port: ""
+      - index: "ZooKeeper-01"
+        host: "zookeeper-0.zookeeper-headless.zookeeper"
+        port: "2181"
+      - index: "ZooKeeper-02"
+        host: "zookeeper-1.zookeeper-headless.zookeeper"
+        port: "2181"
+      - index: "ZooKeeper-03"
+        host: "zookeeper-2.zookeeper-headless.zookeeper"
+        port: "2181"
     ##
     ## Configuration of clusters used by the Distributed table engine.
     ## The parameters host, port, and optionally user, password, secure, compression are specified for each server:
@@ -215,7 +221,7 @@ clickhouse:
     # compression - Use data compression. Default value: true.
     remote_servers:
       enabled: true
-      internal_replication: false
+      internal_replication: true
       replica: 
         user: "default"
         #password: ""
