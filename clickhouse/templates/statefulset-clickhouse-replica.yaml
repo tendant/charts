@@ -29,6 +29,15 @@ spec:
         app.kubernetes.io/name: {{ include "clickhouse.name" . }}-replica
         app.kubernetes.io/instance: {{ .Release.Name }}-replica
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                - {{ include "clickhouse.name" . }}
     {{- if .Values.affinity }}
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}
