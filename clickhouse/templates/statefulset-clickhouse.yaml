@@ -34,6 +34,10 @@ spec:
           - topologyKey: kubernetes.io/hostname
             labelSelector:
               matchExpressions:
+              - key: io.kubernetes.pod.name
+                operator: In
+                values: 
+                - {{ include "clickhouse.name" . }}-replica
               - key: app.kubernetes.io/instance
                 operator: In
                 values: 
