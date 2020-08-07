@@ -35,7 +35,7 @@ spec:
           - topologyKey: kubernetes.io/hostname
             labelSelector:
               matchExpressions:
-              - key: statefulset.kubernetes.io/pod-name
+              - key: io.kubernetes.pod.name
                 operator: In
                 values: 
                 - {{ include "clickhouse.name" . }}
