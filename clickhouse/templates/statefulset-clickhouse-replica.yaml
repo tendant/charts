@@ -32,12 +32,14 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
+          - topologyKey: kubernetes.io/hostname
+            labelSelector:
               matchExpressions:
-              - key: "app.kubernetes.io/name"
+              - key: app.kubernetes.io/name
                 operator: In
                 values: 
                 - {{ include "clickhouse.name" . }}
+              
     {{- if .Values.affinity }}
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}
