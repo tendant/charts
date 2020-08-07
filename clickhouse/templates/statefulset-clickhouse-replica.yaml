@@ -34,9 +34,10 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-              - key: app.kubernetes.io/name
+              - key: "app.kubernetes.io/name"
                 operator: In
-                values: {{ include "clickhouse.name" . }}
+                values: 
+                - {{ include "clickhouse.name" . }}
     {{- if .Values.affinity }}
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}
