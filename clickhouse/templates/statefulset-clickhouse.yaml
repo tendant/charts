@@ -34,7 +34,7 @@ spec:
           - topologyKey: kubernetes.io/hostname
             labelSelector:
               matchExpressions:
-              - key: app.kubernetes.io/name
+              - key: statefulset.kubernetes.io/pod-name
                 operator: In
                 values: 
                 - {{ include "clickhouse.name" . }}-replica
