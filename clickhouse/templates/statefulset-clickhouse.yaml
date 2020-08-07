@@ -37,7 +37,7 @@ spec:
               - key: io.kubernetes.pod.name
                 operator: In
                 values: 
-                - {{ $statefulset.kubernetes.io/pod-name }}
+                - {{ include "clickhouse.fullname" . | quote }}-replica
               - key: app.kubernetes.io/instance
                 operator: In
                 values: 
