@@ -37,7 +37,7 @@ spec:
               - key: io.kubernetes.pod.name
                 operator: In
                 values: 
-                - $name-replica
+                - {{ $statefulset.kubernetes.io/pod-name }}
               - key: app.kubernetes.io/instance
                 operator: In
                 values: 
