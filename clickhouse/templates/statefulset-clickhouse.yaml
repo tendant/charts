@@ -27,27 +27,7 @@ spec:
       labels: 
         app.kubernetes.io/name: {{ include "clickhouse.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
-<<<<<<< HEAD
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: clickhouse
-                operator: In
-                values:
-                - primary
-=======
-      # affinity:
-      #   nodeAffinity:
-      #     requiredDuringSchedulingIgnoredDuringExecution:
-      #       nodeSelectorTerms:
-      #       - matchExpressions:
-      #         - key: clickhouse
-      #           operator: In
-      #           values:
-      #           - primary
->>>>>>> b5b30958f376a5894528e693cbb34d49ab4d109d
+    spec:
     {{- if .Values.affinity }}
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}
