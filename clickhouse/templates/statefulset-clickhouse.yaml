@@ -27,7 +27,6 @@ spec:
       labels: 
         app.kubernetes.io/name: {{ include "clickhouse.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
-    spec:
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -36,7 +35,7 @@ spec:
               - key: clickhouse
                 operator: In
                 values:
-                - true
+                - primary
     {{- if .Values.affinity }}
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}
