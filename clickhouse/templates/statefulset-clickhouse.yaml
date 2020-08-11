@@ -29,19 +29,14 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       affinity:
-        podAntiAffinity:
+        nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-          - topologyKey: kubernetes.io/hostname
-            labelSelector:
-              matchExpressions:
-              - key: io.kubernetes.pod.name
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: clickhouse
                 operator: In
-                values: 
-                - {{ include "clickhouse.fullname" . }}-replica
-              - key: app.kubernetes.io/instance
-                operator: In
-                values: 
-                - {{ .Release.Name }}
+                values:
+                - true
     {{- if .Values.affinity }}
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}

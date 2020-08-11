@@ -30,19 +30,14 @@ spec:
         app.kubernetes.io/instance: {{ .Release.Name }}-replica
     spec:
       affinity:
-        podAntiAffinity:
+        nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-          - topologyKey: kubernetes.io/hostname
-            labelSelector:
-              matchExpressions:
-              - key: statefulset.kubernetes.io/pod-name
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: clickhouse-replica
                 operator: In
-                values: 
-                - {{ include "clickhouse.name" . }}
-              - key: app.kubernetes.io/instance
-                operator: In
-                values: 
-                - {{ .Release.Name }}-replica
+                values:
+                - true
               
     {{- if .Values.affinity }}
       affinity:
