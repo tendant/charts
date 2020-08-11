@@ -37,7 +37,7 @@ spec:
               - key: clickhouse
                 operator: In
                 values:
-                - primary      
+                - replica      
     {{- if .Values.affinity }}
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}
