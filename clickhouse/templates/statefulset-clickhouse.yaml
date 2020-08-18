@@ -33,9 +33,6 @@ spec:
       labels: 
         traefik.enable: "true"
         traefik.port: "8123"
-        {{- if .Values.labels.enabled }}
-    {{ toYaml .Values.labelsContent | indent 8 }}
-        {{- end }}
         app.kubernetes.io/name: {{ include "clickhouse.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
