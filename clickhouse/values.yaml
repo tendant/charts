@@ -54,7 +54,7 @@ clickhouse:
   interserver_http_port: "9009"
   ## 
   ## The instance number of Clickhouse
-  replicas: "3"
+  replicas: "2"
   ## Clickhouse image configuration.
   image: "yandex/clickhouse-server"
   imageVersion: "20.3"
@@ -90,14 +90,14 @@ clickhouse:
       accessModes: 
       - "ReadWriteOnce"
       storageClassName: "longhorn"
-      storage: "7Gi"
+      storage: "30Gi"
     ## Clickhouse logs volume
     logsPersistentVolume:
       enabled: true
       accessModes: 
       - "ReadWriteOnce"
       storageClassName: "longhorn"
-      storage: "1Gi"
+      storage: "2Gi"
   ##
   ## An API object that manages external access to the services in a cluster, typically HTTP.
   ## Ingress can provide load balancing, SSL termination and name-based virtual hosting.
