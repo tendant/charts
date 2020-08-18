@@ -4,6 +4,11 @@ timezone: "Europe/Prague"
 ## Cluster domain
 clusterDomain: "cluster.local"
 
+labels.enabled: true
+
+labelsContent:
+  traefik.enable: "true"
+  traefik.port: "8123"
 ##
 ## Clickhouse Node selectors and tolerations for pod assignment
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
@@ -54,7 +59,7 @@ clickhouse:
   interserver_http_port: "9009"
   ## 
   ## The instance number of Clickhouse
-  replicas: "2"
+  replicas: "1"
   ## Clickhouse image configuration.
   image: "yandex/clickhouse-server"
   imageVersion: "20.3"

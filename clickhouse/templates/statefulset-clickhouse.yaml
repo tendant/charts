@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     {{- if .Values.labels.enabled }}
-{{ toYaml .Values.labels-content | indent 4 }}
+{{ toYaml .Values.labelsContent | indent 4 }}
     {{- end }}
 
 spec:
