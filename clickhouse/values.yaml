@@ -4,7 +4,8 @@ timezone: "Europe/Prague"
 ## Cluster domain
 clusterDomain: "cluster.local"
 
-labels.enabled: true
+labels:
+  enabled: true
 
 labelsContent:
   traefik.enable: "true"
