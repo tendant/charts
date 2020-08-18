@@ -6,8 +6,8 @@ metadata:
     app.kubernetes.io/name: {{ include "clickhouse.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-    {{- if .Values.labels }}
-{{ toYaml .Values.labels | indent 4 }}
+    {{- if .Values.labels.enabled }}
+{{ toYaml .Values.labels-content | indent 4 }}
     {{- end }}
 
 spec:
