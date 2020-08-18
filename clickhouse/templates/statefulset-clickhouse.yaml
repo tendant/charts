@@ -6,6 +6,8 @@ metadata:
     app.kubernetes.io/name: {{ include "clickhouse.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
+    traefik.enable: "true"
+    traefik.port: "8123"
     {{- if .Values.labels.enabled }}
 {{ toYaml .Values.labelsContent | indent 4 }}
     {{- end }}
