@@ -31,17 +31,17 @@ data:
         {{- with . }}
             <{{ .name }}>
             {{- range $k_1, $v_1 := .config }}
-            {{- if (eq "networks" $k_1) }}
-                <networks incl="networks" replace="replace">
-                {{- range $v_1 }}
-                {{- with .}}
-                    <ip>{{ . }}</ip>
-                {{- end }}
-                {{- end }}
-                </networks>
-            {{- else }}
+#            {{- if (eq "networks" $k_1) }}
+#                <networks incl="networks" replace="replace">
+#                {{- range $v_1 }}
+#                {{- with .}}
+#                    <ip>{{ . }}</ip>
+#                {{- end }}
+#                {{- end }}
+#                </networks>
+#            {{- else }}
                 <{{ $k_1 }}>{{ $v_1 }}</{{ $k_1 }}>
-            {{- end }}
+#           {{- end }}
             {{- end }}
             </{{ .name }}>
         {{- end }}
